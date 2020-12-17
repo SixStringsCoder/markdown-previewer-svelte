@@ -6,16 +6,21 @@
 	import Previewer from './Previewer.svelte';
 	import Modal from './Modal.svelte';
 
+
+	let modalOpen: boolean = false;
+	$: console.log(modalOpen)
+
+	const handleModal = () => modalOpen = !modalOpen;	
 </script>
 
 
 <Header />
 <main>
 	<Editor />
-	<Qbutton />
+	<Qbutton on:click={handleModal} />
 	<Previewer />
 
-	<Modal />
+	<Modal on:click={handleModal} {modalOpen} />
 </main>
 
 
@@ -23,7 +28,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
 
 	main {
-		width: 100vw;
+		width: 100%;
 		padding: 5% 0;
 		display: flex;
 		flex-direction: column;
