@@ -1,5 +1,6 @@
 <script lang="ts">
-  export let markDown;
+  
+  export let markDown: string;
 </script>
 
 <section id="editor-cont">

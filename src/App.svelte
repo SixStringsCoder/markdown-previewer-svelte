@@ -1,24 +1,26 @@
 <script lang="ts">
 	import { sampleCode } from './sampleCode.js';
+	import { onMount } from 'svelte';
 	import Header from './Header.svelte';
 	import Editor from './Editor.svelte';
 	import Qbutton from './Qbutton.svelte';
 	import Previewer from './Previewer.svelte';
 	import Modal from './Modal.svelte';
 
+	let markDown: string = sampleCode;
+	$: htmlDisplay = marked(markDown, { breaks: true, gfm:true, langPrefix:'language'});
+	// // onMount(() => markdown = sampleCode);
 
 	let modalOpen: boolean = false;
-	$: console.log(modalOpen)
-
 	const handleModal = () => modalOpen = !modalOpen;	
 </script>
 
 
 <Header />
 <main>
-	<Editor />
+	<Editor bind:markDown />
 	<Qbutton on:click={handleModal} />
-	<Previewer />
+	<Previewer {htmlDisplay} />
 
 	<Modal on:click={handleModal} {modalOpen} />
 </main>

@@ -1,10 +1,10 @@
 <script lang="ts">
-  export let displayHTML;
+  export let htmlDisplay;
 </script>
 
 
 <section id="preview-cont">
-  <div id="preview">{@html displayHTML}</div>
+  <div id="preview">{@html htmlDisplay}</div>
 </section>
 
 
